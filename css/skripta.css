@@ -1,0 +1,132 @@
+* {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #a50044;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  background-image: linear-gradient(#a50044, #5f062b);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main {
+  background-color: #5f062b;
+}
+header img {
+  max-width: 400px;
+  height: auto;
+  margin: 0 auto;
+  padding-bottom: 2em;
+  padding: 3rem;
+}
+header h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1em;
+}
+nav {
+  margin: 20px 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #800033;
+}
+main {
+  padding: 20px;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: white;
+  text-align: center;
+}
+
+main p {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+main img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+footer {
+  background-color: #4e0523;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.dababy {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 20px;
+}
+.paragraph {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.5em;
+}
+@media (max-width: 600px) {
+  nav ul li {
+    display: block;
+    margin: 0 15px;
+    padding-bottom: 40px;
+  }
+
+  footer {
+    font-size: 0.8em;
+  }
+  header {
+    height: 38rem;
+  }
+}
