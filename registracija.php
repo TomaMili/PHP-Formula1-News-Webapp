@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['reg'])) {
         $hash_lozinka = password_hash($lozinka, PASSWORD_BCRYPT);
         $razina = 0;
 
-        // Check if username already exists
+        
         $sql = "SELECT id FROM korisnici WHERE korisnicko_ime = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $korime);
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['reg'])) {
             $_SESSION['username'] = $korime;
             $_SESSION['level'] = $razina;
 
-            // Insert new user
+            
             $sql = "INSERT INTO korisnici (ime, prezime, korisnicko_ime, lozinka, razina) VALUES (?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssssd", $ime, $prezime, $korime, $hash_lozinka, $razina);
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['reg'])) {
             }
         }
 
-        // Close statement
+        
         $stmt->close();
     }
 }
@@ -63,6 +63,10 @@ $conn->close();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="F1 news page as a uni project">
+    <meta name="keywords" content="Formula1, F1, Max Verstappen, Lewis Hamilton">
+    <meta name="author" content="Toma Milićević">
+    <link rel="shortcut icon" href="images/f1_favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/registracija.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -1,11 +1,11 @@
 <?php
-session_start(); // Start or resume session
+session_start(); 
 include 'db_connect.php';
 define('UPLPATH', 'images/');
 
 $admin = false;
 
-// Check if the user is logged in and is an admin
+
 if (isset($_SESSION['razina']) && $_SESSION['razina'] == 1) {
     $admin = true;
 }
@@ -18,6 +18,10 @@ if (isset($_SESSION['razina']) && $_SESSION['razina'] == 1) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/unos.css">
+    <link rel="shortcut icon" href="images/f1_favicon.png" type="image/x-icon">
+    <meta name="description" content="F1 news page as a uni project">
+    <meta name="keywords" content="Formula1, F1, Max Verstappen, Lewis Hamilton">
+    <meta name="author" content="Toma Milićević">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
@@ -89,7 +93,7 @@ if (isset($_SESSION['razina']) && $_SESSION['razina'] == 1) {
         document.getElementById('newsForm').onsubmit = function (event) {
             var valid = true;
 
-            // Naslov
+            
             var naslov = document.getElementById('naslov').value;
             if (naslov.length < 5 || naslov.length > 100) {
                 valid = false;
@@ -100,7 +104,7 @@ if (isset($_SESSION['razina']) && $_SESSION['razina'] == 1) {
                 document.getElementById('naslov').style.border = "1px solid green";
             }
 
-            // Kratki sadržaj
+            
             var sadrzaj = document.getElementById('sadrzaj').value;
             if (sadrzaj.length < 10 || sadrzaj.length > 200) {
                 valid = false;
@@ -111,7 +115,7 @@ if (isset($_SESSION['razina']) && $_SESSION['razina'] == 1) {
                 document.getElementById('sadrzaj').style.border = "1px solid green";
             }
 
-            // Tekst vijesti
+            
             var tekst = document.getElementById('tekst').value;
             if (tekst.length == 0) {
                 valid = false;
@@ -122,7 +126,7 @@ if (isset($_SESSION['razina']) && $_SESSION['razina'] == 1) {
                 document.getElementById('tekst').style.border = "1px solid green";
             }
 
-            // Slika
+            
             var slika = document.getElementById('slika').value;
             if (slika.length == 0) {
                 valid = false;
@@ -133,7 +137,7 @@ if (isset($_SESSION['razina']) && $_SESSION['razina'] == 1) {
                 document.getElementById('slika').style.border = "1px solid green";
             }
 
-            // Kategorija
+            
             var kategorija = document.getElementById('kategorija').value;
             if (kategorija == "") {
                 valid = false;

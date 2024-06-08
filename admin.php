@@ -52,6 +52,10 @@ if (isset($_POST['update'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="F1 news page as a uni project">
+    <meta name="keywords" content="Formula1, F1, Max Verstappen, Lewis Hamilton">
+    <meta name="author" content="Toma Milićević">
+    <link rel="shortcut icon" href="images/f1_favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/admin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,7 +67,7 @@ if (isset($_POST['update'])) {
     
     <header>
         <img src="images/F1.svg.png" alt="">
-        <h3>Welcome <?php echo isset($_SESSION['korisnicko_ime']) ? $_SESSION['korisnicko_ime'] : 'Guest'; ?></h2>
+        <h3>Welcome <?php echo isset($_SESSION['korisnicko_ime']) ? $_SESSION['korisnicko_ime'] : 'Guest'; ?></h3>
             <nav>
                 <ul>
                     <li><a href="index.php">HOME</a></li>
@@ -80,7 +84,7 @@ if (isset($_POST['update'])) {
         <div class="form-search">
                 <form action="" method="POST">
                     <label for="kategorija">Kategorija: </label>
-                    <select id="kategorija" name="kategorija">
+                    <select class="kategorija" name="kategorija">
                         <option value="" disabled selected>Odabir kategorije</option>
                         <option value="f1">Formula 1</option>
                         <option value="f2">Formula 2</option>
@@ -122,13 +126,13 @@ if (isset($_POST['update'])) {
                                 <div class="form-field">
                                     <input type="file" id="slika" name="slika" />
                                     <br>
-                                    <img class="img_form" src="<?= UPLPATH . $row['slika']; ?>" width="200px">
+                                    <img class="img_form" src="<?= UPLPATH . $row['slika']; ?>" width="200">
                                 </div>
                             </div>
                             <div class="form-item">
                                 <label for="kategorija">Kategorija vijesti:</label>
                                 <div class="form-field">
-                                    <select name="kategorija" id="kategorija" class="form-field-textual">
+                                    <select name="kategorija" class="form-field-textual kategorija">
                                         <option value="<?= $row['kategorija']; ?>"><?= ucfirst($row['kategorija']); ?></option>
                                         <option value="f1">Formula 1</option>
                                         <option value="f2">Formula 2</option>

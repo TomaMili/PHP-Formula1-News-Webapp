@@ -1,14 +1,13 @@
 <?php
-session_start(); // Start or resume session
-
+session_start(); 
 include 'db_connect.php';
 
-// Check if form data is submitted
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $korisnicko_ime = $_POST['korisnicko_ime'];
     $lozinka = $_POST['lozinka'];
 
-    // Check username and password
+    
     $sql = "SELECT id, lozinka, razina FROM korisnici WHERE korisnicko_ime = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $korisnicko_ime);
@@ -22,24 +21,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($lozinka, $hashed_password)) {
             $_SESSION['korisnicko_ime'] = $korisnicko_ime;
             $_SESSION['razina'] = $razina;
-            header("Location: index.php"); // Redirect to home page
-            exit(); // Stop further execution
+            header("Location: index.php"); 
+            exit(); 
         } else {
-            $_SESSION['wrong_username'] = "Pogrešno korisničko ime ili lozinka."; // Set the error message
-            header("Location: prijava.php"); // Redirect back to the login page
-            exit(); // Stop further execution
+            $_SESSION['wrong_username'] = "Pogrešno korisničko ime ili lozinka."; 
+            header("Location: prijava.php"); 
+            exit(); 
         }
     } else {
-        $_SESSION['wrong_username'] = "Pogrešno korisničko ime ili lozinka."; // Set the error message
-        header("Location: prijava.php"); // Redirect back to the login page
-        exit(); // Stop further execution
+        $_SESSION['wrong_username'] = "Pogrešno korisničko ime ili lozinka."; 
+        header("Location: prijava.php"); 
+        exit(); 
     }
 
-    // Close prepared statement
+    
     $stmt->close();
 }
 
-// Close database connection
+
 $conn->close();
 ?>
 
@@ -50,6 +49,10 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
+    <meta name="description" content="F1 news page as a uni project">
+    <meta name="keywords" content="Formula1, F1, Max Verstappen, Lewis Hamilton">
+    <meta name="author" content="Toma Milićević">
+    <link rel="shortcut icon" href="images/f1_favicon.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
@@ -79,7 +82,7 @@ $conn->close();
             <label class="label_flex" for="korisnicko_ime">Korisničko ime:  <?php
             if (isset($_SESSION['wrong_username'])) {
                 echo "<p class='error'>" . $_SESSION['wrong_username'] . "</p>";
-                unset($_SESSION['wrong_username']); // Remove the session variable after displaying the error
+                unset($_SESSION['wrong_username']); 
             }
             ?></label>
             <input type="text" id="korisnicko_ime" name="korisnicko_ime" required>

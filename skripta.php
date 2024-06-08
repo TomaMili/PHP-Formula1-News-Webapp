@@ -2,7 +2,7 @@
 session_start();
 include 'db_connect.php';
 
-// Provjera da li su podaci iz forme poslani
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $naslov = $_POST['naslov'];
     $sadrzaj = $_POST['sadrzaj'];
@@ -10,32 +10,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $kategorija = $_POST['kategorija'];
     $arhiva = isset($_POST['arhiva']) ? 1 : 0;
 
-    // Upload slike
+    
     $slika = $_FILES['slika']['name'];
     $target_dir = "images/";
     $target_file = $target_dir . basename($slika);
 
     if (move_uploaded_file($_FILES['slika']['tmp_name'], $target_file)) {
-        // Priprema SQL upita
+        
         $sql = "INSERT INTO vijesti (naslov, sadrzaj, tekst, slika, kategorija, arhiva) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sssssi", $naslov, $sadrzaj, $tekst, $slika, $kategorija, $arhiva);
 
-        // Izvršenje upita
+        
         if ($stmt->execute()) {
             $message = "Vijest je uspješno unesena.";
         } else {
             $message = "Došlo je do pogreške: " . $stmt->error;
         }
 
-        // Zatvaranje pripremljene izjave
+        
         $stmt->close();
     } else {
         $message = "Došlo je do pogreške pri uploadu slike.";
     }
 }
 
-// Zatvaranje konekcije
+
 $conn->close();
 ?>
 
@@ -46,6 +46,10 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/skripta.css">
+    <link rel="shortcut icon" href="images/f1_favicon.png" type="image/x-icon">
+    <meta name="description" content="F1 news page as a uni project">
+    <meta name="keywords" content="Formula1, F1, Max Verstappen, Lewis Hamilton">
+    <meta name="author" content="Toma Milićević">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
