@@ -72,6 +72,15 @@ main {
   padding: 20px;
 }
 
+h1,
+h1 span {
+  font-size: 2rem;
+  margin-top: 5px;
+  font-weight: 900;
+  font-style: italic;
+  color: #800033;
+}
+
 article {
   max-width: 800px;
   margin: 0 auto;
@@ -106,6 +115,11 @@ article p:first-of-type {
   font-weight: bold;
   font-size: 1.1em;
   margin-bottom: 10px;
+}
+
+.first-letter {
+  font-size: 1.7em;
+  font-family: "Times New Roman", Times, serif;
 }
 
 footer {

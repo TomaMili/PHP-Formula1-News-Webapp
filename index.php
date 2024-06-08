@@ -24,7 +24,10 @@ define('UPLPATH', 'images/');
 <body>
     <header>
         <img src="images/F1.svg.png" alt="">
-        <h3>Welcome <?php echo isset($_SESSION['korisnicko_ime']) ? $_SESSION['korisnicko_ime'] : 'Guest'; ?></h2>
+        <h3>Welcome <?php echo isset($_SESSION['korisnicko_ime']) ? $_SESSION['korisnicko_ime'] : 'Guest'; ?></h3>
+        <div> <?php
+            echo date('D, M jS, Y');?>
+        </div>
             <nav>
                 <ul>
                     <li><a href="index.php">HOME</a></li>

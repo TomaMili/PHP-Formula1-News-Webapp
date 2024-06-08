@@ -25,7 +25,10 @@ $clanak = mysqli_fetch_array($rezultat);
 <body>
     <header>
         <img src="images/F1.svg.png" alt="">
-        <h3>Welcome <?php echo isset($_SESSION['korisnicko_ime']) ? $_SESSION['korisnicko_ime'] : 'Guest'; ?></h2>
+        <h3>Welcome <?php echo isset($_SESSION['korisnicko_ime']) ? $_SESSION['korisnicko_ime'] : 'Guest'; ?></h3>
+        <div> <?php
+            echo date('D, M jS, Y');?>
+        </div>
             <nav>
                 <ul>
                     <li><a href="index.php">HOME</a></li>
@@ -40,11 +43,15 @@ $clanak = mysqli_fetch_array($rezultat);
     </header>
     <main>
         <article>
+            <h1>FORMULA <span><?php echo substr($clanak['kategorija'],1); ?></span></h1>
             <h2><?php echo $clanak['naslov']; ?></h2>
+            <div id="news_date">
+                <?php echo date_format(date_create($clanak['datum']), "d/m/Y"); ?>
+            </div>
             <img src="images/<?php echo $clanak['slika']; ?>" alt="News 1">
             <p><?php echo $clanak['sadrzaj']; ?></p>
             <br>
-            <p><?php echo $clanak['tekst']; ?></p></br>
+            <p><?php echo '<span class="first-letter">' . substr($clanak['tekst'], 0, 1) . '</span>' . substr($clanak['tekst'], 1);; ?></p></br>
         </article>
     </main>
     <footer>
