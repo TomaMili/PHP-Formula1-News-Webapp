@@ -1,9 +1,11 @@
 <?php
+session_start(); 
 include 'db_connect.php';
-session_start();
-$query = "SELECT * FROM vijesti WHERE id = " . $_GET['id'] . ";";
-$rezultat = mysqli_query($conn, $query);
-$clanak = mysqli_fetch_array($rezultat);
+define('UPLPATH', 'images/');
+
+    $kategorija = mysqli_real_escape_string($conn, $_GET['kategorija']);
+    $query = "SELECT * FROM vijesti WHERE kategorija = '$kategorija'";
+    $rezultat = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
 <html lang="hr">
@@ -11,7 +13,7 @@ $clanak = mysqli_fetch_array($rezultat);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="css/kategorija.css">
     <meta name="description" content="F1 news page as a uni project">
     <meta name="keywords" content="Formula1, F1, Max Verstappen, Lewis Hamilton">
     <meta name="author" content="Toma Milićević">
@@ -19,7 +21,7 @@ $clanak = mysqli_fetch_array($rezultat);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <title><?php echo ucfirst($clanak['naslov']); ?></title>
+    <title>Kategorija - Formula 1 News</title>
 </head>
 
 <body>
@@ -42,17 +44,24 @@ $clanak = mysqli_fetch_array($rezultat);
             </nav>
     </header>
     <main>
-        <article>
-            <h1>FORMULA <span><?php echo substr($clanak['kategorija'],1); ?></span></h1>
-            <h2><?php echo $clanak['naslov']; ?></h2>
-            <div id="news_date">
-                <?php echo date_format(date_create($clanak['datum']), "d/m/Y"); ?>
+        <section class="news">
+            <div class="container">
+                <section>
+                    <h1>FORMULA <span><?php echo strtoupper(substr($kategorija, 1)); ?></span></h1>
+                      <?php
+                    while ($red = mysqli_fetch_assoc($rezultat)) {
+                        echo '<a href="news.php?id=' . $red['id'] . '">';
+                        echo '<article class="col">';
+                        echo '<img src="' . UPLPATH . htmlspecialchars($red['slika']) . '" alt="' . htmlspecialchars($red['naslov']) . '">';
+                        echo '<h2>' . htmlspecialchars($red['naslov']) . '</h2>';
+                        echo '</article>';
+                        echo '</a>';
+                    }
+                    ?>
+                    <div class="clear"></div>
+                </section>
             </div>
-            <img src="images/<?php echo $clanak['slika']; ?>" alt="News 1">
-            <p><?php echo $clanak['sadrzaj']; ?></p>
-            <br>
-            <p><?php echo '<span class="first-letter">' . substr($clanak['tekst'], 0, 1) . '</span>' . substr($clanak['tekst'], 1);; ?></p></br>
-        </article>
+            </section>
     </main>
     <footer>
         <p>&copy; 2024 Formula 1 News | Autor: Toma Milićević | Kontakt: tmilicev1@tvz.hr</p>
@@ -60,3 +69,7 @@ $clanak = mysqli_fetch_array($rezultat);
 </body>
 
 </html>
+
+<?php
+mysqli_close($conn);
+?>

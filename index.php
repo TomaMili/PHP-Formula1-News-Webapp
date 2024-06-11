@@ -18,7 +18,7 @@ define('UPLPATH', 'images/');
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <title>Formula 1 News</title>
+    <title>Home - Formula 1 News</title>
 </head>
 
 <body>
@@ -44,7 +44,8 @@ define('UPLPATH', 'images/');
         <section class="news">
             <div class="container">
                 <section id="top">
-                    <h1>FORMULA 1</h1>
+                    <a href="kategorija.php?kategorija=f1 " class="">
+                    <h1>FORMULA 1</h1></a>
                     
                     <?php
                     $query = "SELECT * FROM vijesti WHERE arhiva=1 AND kategorija='f1' LIMIT 9";
@@ -65,7 +66,8 @@ define('UPLPATH', 'images/');
             </div>
             <div class="container">
                 <section id="mid">
-                    <h1>FORMULA 2</h1>
+                    <a href="kategorija.php?kategorija=f2 " class="">
+                    <h1>FORMULA 2</h1></a>
                     <?php
                     $query = "SELECT * FROM vijesti WHERE arhiva=1 AND kategorija='f2' LIMIT 9";
                     $rezultat = mysqli_query($conn, $query);
@@ -85,7 +87,8 @@ define('UPLPATH', 'images/');
             </div>
             <div class="container">
                 <section id="bot">
-                    <h1>FORMULA 3</h1>
+                    <a href="kategorija.php?kategorija=f3 " class="">
+                    <h1>FORMULA 3</h1></a>
                     <?php
                     $query = "SELECT * FROM vijesti WHERE arhiva=1 AND kategorija='f3' LIMIT 9";
                     $rezultat = mysqli_query($conn, $query);
