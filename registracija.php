@@ -31,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['reg'])) {
         if ($stmt->num_rows > 0) {
             $unique = false;
         } else {
-            session_start();
             $_SESSION['username'] = $korime;
             $_SESSION['level'] = $razina;
 
@@ -119,7 +118,7 @@ $conn->close();
             </form>
             
             <?php if ($registriranKorisnik) {
-                echo '<p>Korisnik je uspješno registriran!</p>';
+                echo '<p class="register">Korisnik je uspješno registriran!</p>';
             } ?>
 
             <script type="text/javascript">

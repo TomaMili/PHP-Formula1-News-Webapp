@@ -134,6 +134,11 @@ footer {
   padding: 0;
 }
 
+.register {
+  text-align: center;
+  color: white;
+}
+
 @media (max-width: 600px) {
   nav ul li {
     display: block;
